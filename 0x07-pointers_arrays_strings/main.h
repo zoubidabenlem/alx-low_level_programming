@@ -56,4 +56,10 @@ void print_chessboard(char (*a)[8]);
  * Return: 1 or 0
  */
 int _putchar(char c);
+/**
+ * print_diagonal - prints diagonal
+ *
+ * @n: integer to see how many stupid lines
+ */
+void print_diagonal(int n);
 #endif
