@@ -23,4 +23,11 @@ char *_memcpy(char *dest, char *src, unsigned int n);
  * Return: found character
  */
 char *_strchr(char *s, char c);
+/**
+ * _strspan  - length of previx substring
+ * @s: string to go through
+ * @accept: accept bytes
+ * Return: returns usigned int value
+ */
+unsigned int _strspn(char *s, char *accept);
 #endif
