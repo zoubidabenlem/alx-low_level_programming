@@ -30,4 +30,24 @@ char *_strchr(char *s, char c);
  * Return: returns usigned int value
  */
 unsigned int _strspn(char *s, char *accept);
+/**
+ * _strpbrk - search string for all chars
+ * @s: string to search
+ * @accept: accepting string
+ * Return: return those letters only
+ */
+char *_strpbrk(char *s, char *accept);
+/**
+ * _strstr - locates substring
+ * @haystack: string to locate substring
+ * @needle: string to locate
+ * Return: return string found
+ */
+char *_strstr(char *haystack, char *needle);
+/**
+ * print_chessboard - prints board
+ * @a: prints a characters
+ *
+ */
+void print_chessboard(char (*a)[8]);
 #endif
