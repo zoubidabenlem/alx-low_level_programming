@@ -7,4 +7,11 @@
  * return :c char value
 */
 char *create_array(unsigned int size, char c);
+#include "main.h"
+/**
+ * _strdup makes a copy of a string
+ * str : string to duplicate
+ * return :pointer to duplicate
+*/
+char *_strdup(char *str);
 #endif
