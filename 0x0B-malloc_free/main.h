@@ -14,4 +14,11 @@ char *create_array(unsigned int size, char c);
  * return :pointer to duplicate
 */
 char *_strdup(char *str);
+/**
+ * str_concat - concats strings
+ * @s1: string one to concat
+ * @s2: string 2 to concat
+ * Return: returns a concated string
+ */
+char *str_concat(char *s1, char *s2);
 #endif
