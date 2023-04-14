@@ -21,4 +21,11 @@ char *string_nconcat(char *s1, char *s2, unsigned int n);
  * Return: pointer value
  */
 void *_calloc(unsigned int nmemb, unsigned int size);
+/**
+ * array_range - range of arrays
+ * @min: min of arrange
+ * @max: max of arrays
+ * Return: int value
+ */
+int *array_range(int min, int max);
 #endif
