@@ -14,4 +14,11 @@ void *malloc_checked(unsigned int b);
  * Return: a char pointer value
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n);
+/**
+ * _calloc - calloc function
+ * @nmemb: number of elements
+ * @size: number of bytes
+ * Return: pointer value
+ */
+void *_calloc(unsigned int nmemb, unsigned int size);
 #endif
