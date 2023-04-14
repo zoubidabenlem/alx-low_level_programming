@@ -5,4 +5,5 @@
  * @b: int to check? something
  * Return: something void or pointer
  */
-void *malloc_checkedvoid *malloc_checked(unsigned int b);
+void *malloc_checked(unsigned int b);
+#endif
