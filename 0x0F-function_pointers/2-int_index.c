@@ -9,22 +9,21 @@
 */
 int int_index(int *array, int size, int (*cmp)(int))
 {
+	int i;
+	int b=0;
 	if(array == NULL)
 		exit(98);
 	if(size <= 0)
 		return (-1);
-	int_index(int *array, int size, int (*cmp)(int))
+	for(i = 0; i < size; i++)
 	{
-		int i;
-		int b=0;
-		for(i = 0; i < size; i++)
+		if(cmp(array[i])==0)
 		{
-			if(cmp(array[i])
-				b=1;
-				return i;
+			b=1;
+			return (i);
 		}
-		if(b == 0)
-			return (-1);
 	}
-
+	if(b == 0)
+		return (-1);
+return (i);
 }
