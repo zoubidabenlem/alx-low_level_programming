@@ -10,9 +10,9 @@ void print_all(const char * const format, ...);
  * @type: character to check
  * @f: function to point to
  */
-typedef struct prints
+typedef struct op
 {
-	char *type;
+	char *c;
 	void (*f)(va_list a);
-} prints;
+} printer;
 #endif
