@@ -1,44 +1,54 @@
+#include <stdarg.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include "variadic_functions.h"
 /**
  * print_c - prints char
- * @c: list to give
- * Return: void
+ * @a: list to give
+ * Return: always 0
  */
-void print_c(va_list c)
+int print_c(va_list a)
 {
-	printf("%c", va_arg(c, int));
+	printf("%c", va_arg(a, int));
+	return (0);
 }
 /**
  * print_i - prints int
- * @i: list to give
- * Return: void
+ * @a: list to give
+ * Return: always 0
  */
-void print_i(va_list i)
+int print_i(va_list a)
 {
-	printf("%i", va_arg(i, int));
+	printf("%d", va_arg(a, int));
+	return (0);
 }
 /**
  * print_f - prints float
- * @f: list to give
- * Return: void
+ * @a: list to give
+ * Return: always 0
  */
-void print_f(va_list f)
+int print_f(va_list a)
 {
-	printf("%f", va_arg(f, double));
+	printf("%f", va_arg(a, double));
+	return (0);
 }
 /**
  * print_s - prints string
- * @s: list to give
- * Return: void
+ * @a: list to give
+ * Return: always 0
  */
-void print_s(va_list s)
+int print_s(va_list a)
 {
-	char *str;
+	char *s;
 
-	str = va_arg(s, char*);
-	if (str == NULL)
-		str = "(nil)";
-	printf("%s", str);
+	s = va_arg(a, char *);
+	if (s == NULL)
+	{
+		printf("(nil)");
+		return (0);
+	}
+	printf("%s", s);
+	return (0);
 }
 /**
  * print_all - prints all
@@ -47,36 +57,35 @@ void print_s(va_list s)
  */
 void print_all(const char * const format, ...)
 {
-	int i;
-	int j;
+	int i, j;
 	char *sep = "";
-	prints funcs[] = {
+	char *sep2 = ", ";
+	va_list anyArgs;
+	printer ops[] = {
 		{"c", print_c},
 		{"i", print_i},
-		{"f", print_f},
 		{"s", print_s},
+		{"f", print_f},
 		{NULL, NULL}
 	};
-	va_list args;
 
-	va_start(args, format);
+	va_start(anyArgs, format);
 	i = 0;
-	while (format && format[i])
+	while (format != NULL && format[i])
 	{
 		j = 0;
-		while (funcs[j].type)
+		while (ops[j].f != NULL)
 		{
-			if (format[i] == *(funcs[j].type))
+			if (format[i] == *(ops[j].c))
 			{
 				printf("%s", sep);
-				funcs[j].f(args);
-				sep = ", ";
-				break;
+				ops[j].f(anyArgs);
 			}
 			j++;
 		}
+		sep = sep2;
 		i++;
 	}
 	printf("\n");
-	va_end(args);
+	va_end(anyArgs);
 }
