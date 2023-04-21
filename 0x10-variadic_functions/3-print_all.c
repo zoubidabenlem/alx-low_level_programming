@@ -1,91 +1,93 @@
-#include <stdarg.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "variadic_functions.h"
-/**
- * print_c - prints char
- * @a: list to give
- * Return: always 0
- */
-int print_c(va_list a)
-{
-	printf("%c", va_arg(a, int));
-	return (0);
-}
-/**
- * print_i - prints int
- * @a: list to give
- * Return: always 0
- */
-int print_i(va_list a)
-{
-	printf("%d", va_arg(a, int));
-	return (0);
-}
-/**
- * print_f - prints float
- * @a: list to give
- * Return: always 0
- */
-int print_f(va_list a)
-{
-	printf("%f", va_arg(a, double));
-	return (0);
-}
-/**
- * print_s - prints string
- * @a: list to give
- * Return: always 0
- */
-int print_s(va_list a)
-{
-	char *s;
 
-	s = va_arg(a, char *);
-	if (s == NULL)
-	{
-		printf("(nil)");
-		return (0);
-	}
-	printf("%s", s);
-	return (0);
-}
 /**
- * print_all - prints all
- * @format: format string that says arg types
- *
+ * pr_int - print a integer type;
+ * @val: a va_list struct to process;
+ */
+void pr_int(va_list val)
+{
+	printf("%d", va_arg(val, int));
+}
+
+/**
+ * pr_char - print a char type;
+ * @val: a va_list struct to process;
+ */
+void pr_char(va_list val)
+{
+	printf("%c", va_arg(val, int));
+}
+
+/**
+ * pr_float - prints a double type;
+ * @val: a va_list struct to process;
+ */
+void pr_float(va_list val)
+{
+	printf("%f", va_arg(val, double));
+}
+
+/**
+ * pr_str - print a string type or (nil) if empty/NULL;
+ * @val: a va_list struct to process;
+ */
+void pr_str(va_list val)
+{
+	char *r;
+
+	r = va_arg(val, char *);
+	switch (!r)
+	{
+	case 0:
+		printf("%s", r);
+		break;
+	case 1:
+		printf("(nil)");
+		break;
+	}
+
+}
+
+/**
+ * print_all - print all argument that match with format.
+ * @format: type to print out.
+ * @...: arguments to print.
+ * Return: Nothing
  */
 void print_all(const char * const format, ...)
 {
+
 	int i, j;
-	char *sep = "";
-	char *sep2 = ", ";
-	va_list anyArgs;
-	printer ops[] = {
-		{"c", print_c},
-		{"i", print_i},
-		{"s", print_s},
-		{"f", print_f},
+	va_list vls;
+	p_op ops[] = {
+		{"c", pr_char},
+		{"i", pr_int},
+		{"f", pr_float},
+		{"s", pr_str},
 		{NULL, NULL}
 	};
 
-	va_start(anyArgs, format);
-	i = 0;
-	while (format != NULL && format[i])
+	va_start(vls, format);
+	i = j = 0;
+	while (format && format[j])
 	{
-		j = 0;
-		while (ops[j].f != NULL)
+		i = 0;
+		while (ops[i].op)
 		{
-			if (format[i] == *(ops[j].c))
+			if (ops[i].op[0] == format[j])
 			{
-				printf("%s", sep);
-				ops[j].f(anyArgs);
+				(ops[i].f)(vls);
+				if (format[j + 1])
+					printf(", ");
 			}
-			j++;
+			i++;
 		}
-		sep = sep2;
-		i++;
+		j++;
+
 	}
-	printf("\n");
-	va_end(anyArgs);
+	putchar(10);
+	va_end(vls);
 }
+
