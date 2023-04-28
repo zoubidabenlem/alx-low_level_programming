@@ -1,5 +1,5 @@
 #ifndef LISTS_H_INCLUDED
-#define LISTSS_H_INCLUDED
+#define LISTS_H_INCLUDED
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
