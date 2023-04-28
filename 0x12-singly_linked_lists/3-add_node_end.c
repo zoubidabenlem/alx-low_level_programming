@@ -1,6 +1,6 @@
 #include "lists.h"
 /**
- * add_node - adds node at the end of list
+ * add_node_end - adds node at the end of list
  * @head: head of list
  * @str: string to b added
  *
@@ -11,19 +11,21 @@ list_t *add_node_end(list_t **head, const char *str)
 {
 	list_t *new = malloc(sizeof(list_t));
 	list_t *temp = malloc(sizeof(list_t));
+
 	new->str = strdup(str);
 	new->len = strlen(str);
+
 	if (new == NULL)
 		return (NULL);
 	if ((*head) == NULL)
-	{	
+	{
 		*head = new;
 	}
 	else
 	{
 		temp = *head;
 		while (temp->next != NULL)
-		{	
+		{
 			temp = temp->next;
 		}
 	temp->next = new;
