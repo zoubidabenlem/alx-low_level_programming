@@ -2,7 +2,7 @@
 /**
  * add_node - adds node at the beginning of list
  * @head: head of list
- * @str: string to b added 
+ * @str: string to b added
  *
  * Return: the address of the new element, or NULL if it failed
  */
