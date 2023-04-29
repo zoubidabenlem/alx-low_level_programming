@@ -1,4 +1,4 @@
-#include "main.h"
+#include "lists.h"
 /**
  * print_listint - prints list of numbers
  * @h: head of list
