@@ -7,13 +7,12 @@
 
 void free_listint(listint_t *head)
 {
-	listint_t *del = head;
-	listint_t *node = malloc(sizeof(listint_t));
+	listint_t *del;
 
-	while (del != NULL)
+	while (head != NULL)
 	{
-		node = del->next;
-		free(del);
-		del = node;
+		del = head;
+		free(head);
+		head = del->next;
 	}
 }
