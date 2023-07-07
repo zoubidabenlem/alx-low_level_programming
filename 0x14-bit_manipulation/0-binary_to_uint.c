@@ -10,52 +10,26 @@
 unsigned int binary_to_uint(const char *b)
 {
 	unsigned int num = 0;
-	int i = 0;
-	int length = 0;
 
 	if (b == NULL)
 	{
 		return (0);
 	}
 
-	while (b[i] != '\0')
+	while (*b)
 	{
-		if (b[i] != '0' || b[i] != '1')
+		if (*b == '0')
+		{
+			num = num << 1;
+		}
+		else if (*b == '1')
+		{
+			num = (num << 1) | 1;
+		}
+		else
 		{
 			return (0);
 		}
-		length++;
-	}
-
-	for (i = 0; i < length; i++)
-	{
-		if (b[i] == '0')
-		{
-			continue;
-		}
-		if (b[i] == '1')
-		{
-			num += poww(2, i);
-		}
 	}
 	return (num);
-}
-
-/**
- * power - calculates the power of a number 
- * n: base
- * x: exponent
- *
- * Return: the power of x
- */
-
-unsigned int poww(unsigned int x, int n)
-{
-	int i;
-
-	for (i = 1; i < n; i++)
-	{
-		x = x * x;
-	}
-	return (x);
 }
