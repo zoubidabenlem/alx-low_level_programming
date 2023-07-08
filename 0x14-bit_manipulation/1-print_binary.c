@@ -22,7 +22,7 @@ void print_binary(unsigned long int n)
 		else if (!lz)
 		{
 			_putchar('0');
-		}	
+		}
 	}
 	if (lz)
 	{
